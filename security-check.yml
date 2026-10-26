@@ -1,0 +1,17 @@
+name: Secure coding checklist
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  pattern-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Run teaching pattern checker
+        run: python scripts/check_secure_patterns.py .
